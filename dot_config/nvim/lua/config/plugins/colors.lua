@@ -1,6 +1,15 @@
 return {
-  'rebelot/kanagawa.nvim',
+  'projekt0n/github-nvim-theme',
   config = function()
-    vim.cmd("colorscheme kanagawa-wave")
+    require("github-theme").setup {
+      options = {
+        styles = {
+          comments = "italic",
+          keywords = "bold",
+          types = "italic,bold"
+        },
+      },
+    }
+    vim.cmd("colorscheme github_dark_dimmed")
   end,
 }
