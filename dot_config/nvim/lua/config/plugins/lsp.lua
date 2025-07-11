@@ -13,21 +13,28 @@ return {
   },
 
   config = function()
-    local cmp = require("cmp")
-    local cmp_lsp = require("cmp_nvim_lsp")
-    local lsp_capabilities = cmp_lsp.default_capabilities()
-
     require("mason").setup()
-    require("mason-lspconfig").setup({
-      handlers = {
-        function(server_name)
-          require("lspconfig")[server_name].setup {
-            capabilities = lsp_capabilities,
-          }
-        end,
+    require("mason-lspconfig").setup {
+      ensure_installed = { "lua_ls", "pyright", "rust_analyzer", "tinymist" },
+    }
+
+    vim.lsp.config("*", {
+      capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      root_markers = { ".git", ".jj" }
+    })
+
+    vim.lsp.config('lua_ls', {
+      settings = {
+        Lua = {
+          runtime = { version = 'LuaJIT' },
+          diagnostics = {
+            globals = { 'vim' },
+          },
+        },
       },
     })
 
+    local cmp = require("cmp")
     local lspkind = require("lspkind")
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
     cmp.setup({
