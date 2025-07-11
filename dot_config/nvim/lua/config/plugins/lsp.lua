@@ -15,7 +15,7 @@ return {
   config = function()
     require("mason").setup()
     require("mason-lspconfig").setup {
-      ensure_installed = { "lua_ls", "pyright", "rust_analyzer", "tinymist" },
+      ensure_installed = { "lua_ls", "tinymist", "pyright" },
     }
 
     vim.lsp.config("*", {
@@ -33,6 +33,8 @@ return {
         },
       },
     })
+
+    vim.lsp.enable({'rust_analyzer', 'pyrefly'})
 
     local cmp = require("cmp")
     local lspkind = require("lspkind")
