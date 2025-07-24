@@ -34,7 +34,7 @@ return {
       },
     })
 
-    vim.lsp.enable({'rust_analyzer', 'pyrefly'})
+    vim.lsp.enable({'rust_analyzer', 'pyrefly', 'clangd'})
 
     local cmp = require("cmp")
     local lspkind = require("lspkind")
