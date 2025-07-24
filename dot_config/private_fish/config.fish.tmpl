@@ -13,6 +13,9 @@ alias vim='nvim'
 alias gs='git status'
 alias gl='git log --oneline'
 
+# others
+alias chad='OPENCODE_EXPERIMENTAL=1 opencode'
+
 # vi bindings
 
 fish_vi_key_bindings
@@ -41,3 +44,10 @@ zoxide init --cmd cd fish | source
 # opam
 
 eval $(opam env)
+
+# llm harnesses
+export OPENROUTER_API_KEY="{{ (bitwarden "item" "Openrouter API Key").login.password }}"
+export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
+export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"
+export ANTHROPIC_API_KEY="" # Important: Must be explicitly empty
+
