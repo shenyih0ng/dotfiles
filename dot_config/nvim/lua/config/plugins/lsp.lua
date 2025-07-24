@@ -78,6 +78,7 @@ return {
     })
 
     vim.diagnostic.config({
+      virtual_lines = true,
       virtual_text = false,
       severity_sort = true,
       float = { border = 'rounded' },
@@ -89,6 +90,7 @@ return {
         local opts = { buffer = e.buf }
         vim.keymap.set("n", "K", function() vim.lsp.buf.hover({ border = "rounded" }) end, opts)
         vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+        vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end , opts)
         vim.keymap.set("n", "<leader>k", function() vim.diagnostic.open_float() end, opts)
         vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
       end
